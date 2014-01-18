@@ -12,8 +12,7 @@ module SexprScanner
       result = []
       until eos?
         skip(/\s+/)
-        matcher = matchers.find { |matcher| matcher.call }
-        case match = matcher.format
+        case match = next_match.format
         when '('
           result << parse
         when nil
@@ -25,10 +24,8 @@ module SexprScanner
       result
     end
 
-    def matchers
-      Matchers.constants.map do |m|
-        Matchers.const_get(m).new(self)
-      end
+    def next_match
+      Matchers.all(self).find(&:call)
     end
   end
 end

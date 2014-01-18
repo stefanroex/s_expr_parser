@@ -1,5 +1,9 @@
 module SexprScanner
   module Matchers
+    def self.all(scanner)
+      constants.map { |m| const_get(m).new(scanner) }
+    end
+
     class Parentheses < Matcher
       def call
         scan(/\(/)
