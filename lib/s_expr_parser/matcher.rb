@@ -1,6 +1,6 @@
 require 'forwardable'
 
-module SexprScanner
+module SExprParser
   Matcher = Struct.new(:scanner) do
     extend Forwardable
 

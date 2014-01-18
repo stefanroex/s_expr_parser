@@ -1,6 +1,6 @@
 require 'strscan'
 
-module SexprScanner
+module SExprParser
   class Parser < StringScanner
     def parse!
       parse.first

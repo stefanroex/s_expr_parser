@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'sexpr_scanner/version'
+require 's_expr_parser/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "sexpr_scanner"
-  spec.version       = SexprScanner::VERSION
+  spec.version       = SExprParser::VERSION
   spec.authors       = ["Stefan Roex"]
   spec.email         = ["info@stefanroex.nl"]
   spec.summary       = "S-Expression Parser using the Ruby StringScanner"

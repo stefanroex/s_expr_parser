@@ -1,4 +1,4 @@
-module SexprScanner
+module SExprParser
   module Matchers
     def self.all(scanner)
       constants.map { |m| const_get(m).new(scanner) }

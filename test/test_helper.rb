@@ -1,4 +1,4 @@
 $:.unshift(File.expand_path('../../lib', __FILE__))
 
 require 'minitest/autorun'
-require 'sexpr_scanner'
+require 's_expr_parser'

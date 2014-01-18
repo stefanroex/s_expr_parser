@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module SexprScanner
+module SExprParser
   class TestParser < Minitest::Test
     def assert_parsed(expected, actual)
       assert_equal(expected, Parser.new(actual).parse!)
