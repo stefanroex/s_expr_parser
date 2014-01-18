@@ -1,51 +1,51 @@
 module SexprScanner
   module Matchers
-    module Parentheses
-      def self.call(scanner)
-        scanner.scan(/\(/)
+    class Parentheses < Matcher
+      def call
+        scan(/\(/)
       end
 
-      def self.format(match)
-        match
-      end
-    end
-
-    module Integer
-      def self.call(scanner)
-        scanner.scan(/\-*\d+/)
-      end
-
-      def self.format(match)
-        match.to_i
+      def format
+        matched
       end
     end
 
-    module String
-      def self.call(scanner)
-        scanner.scan(/"([^"\\]|\\.)*"/)
+    class Integer < Matcher
+      def call
+        scan(/\-*\d+/)
       end
 
-      def self.format(match)
-        eval(match)
-      end
-    end
-
-    module Definitions
-      def self.call(scanner)
-        scanner.scan(/\S+(?<!\))/)
-      end
-
-      def self.format(match)
-        match.to_sym
+      def format
+        matched.to_i
       end
     end
 
-    module CatchAll
-      def self.call(scanner)
+    class String < Matcher
+      def call
+        scan(/"([^"\\]|\\.)*"/)
+      end
+
+      def format
+        eval(matched)
+      end
+    end
+
+    class Definitions < Matcher
+      def call
+        scan(/\S+(?<!\))/)
+      end
+
+      def format
+        matched.to_sym
+      end
+    end
+
+    class NullMatcher < Matcher
+      def call
         true
       end
 
-      def self.format(match)
+      def format
         nil
       end
     end
